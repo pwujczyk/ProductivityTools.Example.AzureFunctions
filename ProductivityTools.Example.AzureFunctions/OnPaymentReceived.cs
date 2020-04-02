@@ -16,6 +16,7 @@ namespace ProductivityTools.Example.AzureFunctions
         public static async Task<IActionResult> Run(
             [HttpTrigger(AuthorizationLevel.Function, "post", Route = null)] HttpRequest req,
             [Queue("orders")]IAsyncCollector<Order> orderQuene,
+            [Table("orders")]IAsyncCollector<Order> orderTable,
             ILogger log)
         {
             log.LogInformation("C# HTTP trigger function processed a request.");
@@ -23,7 +24,10 @@ namespace ProductivityTools.Example.AzureFunctions
             string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
             var order= JsonConvert.DeserializeObject<Order>(requestBody);
 
+            order.PartitionKey = "orderspk";
+            order.RowKey = order.Id.ToString();
             await orderQuene.AddAsync(order);
+            await orderTable.AddAsync(order);
 
             log.LogInformation($"Order {order.Name} received");
 
