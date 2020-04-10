@@ -5,7 +5,7 @@ using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Host;
 using Microsoft.Extensions.Logging;
 
-namespace ProductivityTools.Example.AzureFunctions
+namespace ProductivityTools.Learn.AzureFunctions
 {
     public static class GenerateLicenseFile
     {

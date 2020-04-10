@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace ProductivityTools.Example.AzureFunctions
+namespace ProductivityTools.Learn.AzureFunctions
 {
     public class Order
     {

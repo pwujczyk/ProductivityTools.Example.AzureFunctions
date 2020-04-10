@@ -8,7 +8,7 @@ using Microsoft.Azure.WebJobs.Extensions.Http;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 
-namespace ProductivityTools.Example.AzureFunctions
+namespace ProductivityTools.Learn.AzureFunctions
 {
     public static class OnPaymentReceived
     {
